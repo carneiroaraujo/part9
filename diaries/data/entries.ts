@@ -1,4 +1,5 @@
 import { DiaryEntry } from "../src/types"
+import { toNewDiaryEntry } from "../src/utils"
 
 const diaryEntries: DiaryEntry[] = [
   {
@@ -29,5 +30,9 @@ const diaryEntries: DiaryEntry[] = [
       "visibility": "good",
       "comment": "I almost failed the landing but I survived"
   }
-]
+].map(obj => {
+    const entry = toNewDiaryEntry(obj) as DiaryEntry
+    entry.id = obj.id
+    return entry
+})
 export default diaryEntries

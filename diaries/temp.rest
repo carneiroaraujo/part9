@@ -1,0 +1,15 @@
+GET http://localhost:3001/api/diaries/4
+
+
+###
+
+
+POST http://localhost:3001/api/diaries/
+Content-Type: application/json
+
+{
+  "date": "2077-01-01",
+  "weather": "rainy",
+  "visibility": "poor",
+  "comment": "Pretty scary flight, I'm glad I'm alive"
+}

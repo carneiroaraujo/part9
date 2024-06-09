@@ -1,5 +1,6 @@
 const express = require("express")
 const app = express()
+app.use(express.json())
 import diaryRouter from "./routes/diaries"
 
 app.use("/api/diaries", diaryRouter)
