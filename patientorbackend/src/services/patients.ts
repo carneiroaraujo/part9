@@ -15,6 +15,9 @@ function addEntry(object:NewPatient): Patient {
   patientsEntries.push(entry)
   return entry
 }
+function getById(id:string) {
+  return patientsEntries.find(patient => patient.id === id)
+}
 export default {
-  getEntries, getNonSensitiveEntries, addEntry
+  getEntries, getById, getNonSensitiveEntries, addEntry
 }

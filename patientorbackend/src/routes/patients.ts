@@ -8,6 +8,20 @@ router.get("/", (_req:any, res:any) => {
   res.send(patientsService.getNonSensitiveEntries())
 })
 
+router.get("/:id", (req:any, res:any) => {
+  
+  
+  if (!req.params.id) {
+    return res.status(404).send("Missing ID")
+  } 
+  const patient = patientsService.getById(req.params.id)
+  if (patient) {
+    return res.json(patient)
+  }
+  res.send(404).send("Patient not found")
+
+})
+
 router.post("/", (req:any, res:any) => {
   
   try{
