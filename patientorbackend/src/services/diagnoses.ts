@@ -1,5 +1,5 @@
 import diagnosesEntries from "../../data/diagnoses"
-import { Diagnosis } from "../../types"
+import { Diagnosis } from "../types"
 
 function getDiagnoses(): Diagnosis[] {
   return diagnosesEntries

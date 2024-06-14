@@ -1,5 +1,5 @@
 import patientsEntries from "../../data/patients"
-import { NewPatient, NonSensitivePatient, Patient } from "../../types"
+import { Entry, NewEntry, NewPatient, NonSensitivePatient, Patient } from "../types"
 import {v1 as uuid} from "uuid"
 function getEntries(): Patient[] {
   return patientsEntries
@@ -10,14 +10,24 @@ function getNonSensitiveEntries(): NonSensitivePatient[] {
     return newEntry
   })
 }
-function addEntry(object:NewPatient): Patient {
+function addNewPatient(object:NewPatient): Patient {
   const entry = {...object, id: uuid()}
   patientsEntries.push(entry)
   return entry
 }
+
 function getById(id:string) {
   return patientsEntries.find(patient => patient.id === id)
 }
+function addNewEntry(object: NewEntry, userId:string): Entry {
+  const patient = getById(userId)
+  if (!patient) {
+    throw new Error()
+  }
+  const entry = {...object, id: uuid()}
+  patient.entries.push(entry)
+  return entry
+}
 export default {
-  getEntries, getById, getNonSensitiveEntries, addEntry
+  getEntries, getById, getNonSensitiveEntries, addNewEntry, addNewPatient
 }
